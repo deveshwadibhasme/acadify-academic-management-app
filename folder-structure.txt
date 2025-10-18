@@ -1,0 +1,15 @@
+backend/
+│── src/
+│   ├── config/         # Environment variables, DB config, API keys
+│   ├── routes/         # Route definitions (e.g. userRoutes.js, authRoutes.js)
+│   ├── controllers/    # Handle requests, call services (e.g. userController.js)
+│   ├── services/       # Business logic (e.g. userService.js)
+│   ├── models/         # Database models (Mongoose, Sequelize, Prisma, etc.)
+│   ├── middleware/     # Auth checks, logging, error handling
+│   ├── utils/          # Helper functions, constants
+│   ├── tests/          # Unit & integration tests
+│   └── app.js          # Express app setup (middleware, routes)
+│
+├── .env                # Environment variables
+├── package.json
+└── README.md
