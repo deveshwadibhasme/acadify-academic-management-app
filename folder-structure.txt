@@ -13,3 +13,31 @@ backend/
 ├── .env                # Environment variables
 ├── package.json
 └── README.md
+
+
+import cron from 'node-cron';
+import db from './db.js'; // your MySQL connection
+
+cron.schedule('0 * * * *', async () => {
+  console.log('Running cron job: Deactivating expired jobs');
+
+  try {
+    const [result] = await db.query(
+      'UPDATE jobs SET is_active = FALSE WHERE expiry_date <= NOW() AND is_active = TRUE'
+    );
+    console.log(`Deactivated ${result.affectedRows} expired jobs`);
+  } catch (err) {
+    console.error('Error updating expired jobs:', err);
+  }
+},{ timezone: 'Asia/Kolkata' });
+
+https://cron-job.org/en/
+
+
+*    *    *    *    *
+|    |    |    |    |
+|    |    |    |    └── Day of week (0 - 6)
+|    |    |    └───── Month (1 - 12)
+|    |    └────────── Day of month (1 - 31)
+|    └─────────────── Hour (0 - 23)
+└──────────────────── Minute (0 - 59)

@@ -12,4 +12,7 @@ create table if not exists alumni (
     CONSTRAINT fk_user_id FOREIGN KEY (id) REFERENCES users(id)
 );
 
-ALTER TABLE alumni RENAME COLUMN id TO user_id primary_key;
+ALTER TABLE alumni RENAME COLUMN id TO user_id;
+ALTER TABLE alumni
+ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+

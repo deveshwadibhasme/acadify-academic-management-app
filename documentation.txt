@@ -1,0 +1,17 @@
+Devesh Wadibhasme 
+
+Date Started : 15 - 10 - 2025
+
+this idea is in mind ove months but this date I decide to start as this is my diwali vacations days and after vacation end
+my exam days also waiting for me.
+
+before time i thought contining with mongo db but after planning and see the data going to be complex. I learn mySql and 
+then intialize planning of backend and sql tables 
+
+admin , students , alumni are three main, admin logIn/signUp have separate website
+
+so many new things to add/edit in my planning while developing so okay coming soon...
+
+i get to know about new library node-cron as i wants to run some of my functions every 24 hour so search about it and yes 
+but issue is i am using render free instances as it get turn pause when not access for some hour so my node-cron get a 
+restart again but okay let think about it ontime

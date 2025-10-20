@@ -36,9 +36,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 184.06923733448969,
-			"y": 258.1913255124561,
-			"lastActivityTimestamp": 1760943124788,
+			"x": 382.8414709135627,
+			"y": 560.979688175494,
+			"lastActivityTimestamp": 1760976821235,
 			"meta": {}
 		},
 		{
@@ -265,16 +265,16 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 624.3454884356079,
-			"y": 73.88981648604124,
-			"z": 0.6655000000000001,
+			"x": 355.8249888116692,
+			"y": -257.4181524576848,
+			"z": 0.7247295,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
 		},
 		{
-			"x": 147.67171996168958,
-			"y": 148.2857559129024,
+			"x": 112.17145918154773,
+			"y": 166.0358609112202,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -620,9 +620,9 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:MZlx3XDMs6hxM1ZExAKqX"
+				"shape:1chRkxONvmyXIaLHgnYCv"
 			],
-			"hoveredShapeId": "shape:MZlx3XDMs6hxM1ZExAKqX",
+			"hoveredShapeId": "shape:1chRkxONvmyXIaLHgnYCv",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -764,7 +764,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "profile_pic"
+									"text": "profile_picv"
 								}
 							]
 						},
@@ -999,8 +999,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 838.5083666875794,
-			"y": 169.10722714746808,
+			"x": 841.1749926641419,
+			"y": 179.77391415918683,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1223,7 +1223,10 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {},
+			"stylesForNextShape": {
+				"tldraw:color": "black",
+				"tldraw:size": "l"
+			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
@@ -1237,8 +1240,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1252,
-				"h": 746
+				"w": 1123.3333740234375,
+				"h": 540
 			},
 			"insets": [
 				false,
@@ -1253,7 +1256,7 @@
 			"isChatting": false,
 			"highlightedUserIds": [],
 			"isFocused": true,
-			"devicePixelRatio": 1,
+			"devicePixelRatio": 1.5,
 			"isCoarsePointer": false,
 			"isHoveringCanvas": true,
 			"openMenus": [],
@@ -1266,8 +1269,8 @@
 			"typeName": "instance"
 		},
 		{
-			"x": 106.66244978590464,
-			"y": 580.8550001995943,
+			"x": 104.82271097538126,
+			"y": 560.6175785213811,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1446,8 +1449,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 478.9039497279484,
-			"y": 175.27952764205398,
+			"x": 496.2372016810734,
+			"y": 183.27952764205398,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,

@@ -1,4 +1,4 @@
-use student_management_app
+use student_management_app;
 
 CREATE TABLE if not exists admin (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -25,7 +25,7 @@ CREATE TABLE if not exists admin_students (
     student_id INT,
     PRIMARY KEY (admin_id, student_id),
     FOREIGN KEY (admin_id) REFERENCES admin(id),
-    FOREIGN KEY (student_id) REFERENCES students(id)
+    FOREIGN KEY (student_id) REFERENCES student(id)
 );
 
 CREATE TABLE if not exists admin_events (
@@ -33,7 +33,7 @@ CREATE TABLE if not exists admin_events (
     event_id INT,
     PRIMARY KEY (admin_id, event_id),
     FOREIGN KEY (admin_id) REFERENCES admin(id),
-    FOREIGN KEY (event_id) REFERENCES events(id)
+    FOREIGN KEY (event_id) REFERENCES event(id)
 );
 
 CREATE TABLE if not exists admin_jobs (
@@ -41,5 +41,5 @@ CREATE TABLE if not exists admin_jobs (
     job_id INT,
     PRIMARY KEY (admin_id, job_id),
     FOREIGN KEY (admin_id) REFERENCES admin(id),
-    FOREIGN KEY (job_id) REFERENCES jobs(id)
+    FOREIGN KEY (job_id) REFERENCES job(id)
 );
