@@ -36,13 +36,13 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 981.7796993460844,
-			"y": 484.32305509727377,
-			"lastActivityTimestamp": 1760808620069,
+			"x": 184.06923733448969,
+			"y": 258.1913255124561,
+			"lastActivityTimestamp": 1760943124788,
 			"meta": {}
 		},
 		{
-			"x": 385.5328785019394,
+			"x": 489.5328785019394,
 			"y": 582.8754354972896,
 			"rotation": 0,
 			"isLocked": false,
@@ -265,16 +265,16 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 474.446199126941,
-			"y": -53.94050210727028,
-			"z": 0.6784661645119762,
+			"x": 624.3454884356079,
+			"y": 73.88981648604124,
+			"z": 0.6655000000000001,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
 		},
 		{
-			"x": 38.08494310218549,
-			"y": 174.3067927273276,
+			"x": 147.67171996168958,
+			"y": 148.2857559129024,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -620,9 +620,9 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:1pPh3zoJMsFaH6LjDkL9j"
+				"shape:MZlx3XDMs6hxM1ZExAKqX"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:MZlx3XDMs6hxM1ZExAKqX",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -633,7 +633,7 @@
 		},
 		{
 			"x": -294.87197032398507,
-			"y": 172.9802711598927,
+			"y": 160.9592343454675,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -806,8 +806,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 755.7546082845085,
-			"y": 588.7710869081116,
+			"x": 839.7546082845085,
+			"y": 572.7710869081116,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -999,8 +999,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 758.5083666875794,
-			"y": 177.10722714746808,
+			"x": 838.5083666875794,
+			"y": 169.10722714746808,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1223,16 +1223,11 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:color": "black",
-				"tldraw:font": "mono",
-				"tldraw:horizontalAlign": "middle",
-				"tldraw:size": "s"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -1271,8 +1266,8 @@
 			"typeName": "instance"
 		},
 		{
-			"x": 40.66244978590464,
-			"y": 586.8550001995943,
+			"x": 106.66244978590464,
+			"y": 580.8550001995943,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1451,8 +1446,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 381.3592464972946,
-			"y": 168.26375003123505,
+			"x": 478.9039497279484,
+			"y": 175.27952764205398,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1460,8 +1455,8 @@
 			"id": "shape:qefS7A-ahuR6gq-Ymg0tx",
 			"type": "geo",
 			"props": {
-				"w": 288,
-				"h": 372.15625,
+				"w": 284,
+				"h": 360.15625,
 				"geo": "rectangle",
 				"dash": "dashed",
 				"growY": 0,

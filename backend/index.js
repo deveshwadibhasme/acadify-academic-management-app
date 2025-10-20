@@ -1,10 +1,11 @@
 import express from "express";
-import pool from "./config/connectToDb.js";
 import cors from "cors";
 import bodyParser from "body-parser";
-import fs from "fs";
 const app = express();
 const port = 3001;
+
+import pool from "./config/connect-sql.js";
+import { runQueries } from "./utils/run-queries.js";
 
 
 // Middleware
@@ -17,17 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 await pool.getConnection().then((connection) => {
 
-    const queriesToRun = fs.readFileSync('db.sql', 'utf-8');
-    const queries = queriesToRun.split(';');
-    queries.forEach(async (query) => {
-        if (query.trim()){
-            try {
-                await connection.query(query);
-            } catch (error) {
-                console.error("Error executing query:", error);
-            }
-        }
-    });
+    runQueries(connection);
 
     console.log("Connected to the database");
     connection.release();
