@@ -5,9 +5,10 @@ create table if not exists job (
     role varchar(100) not null,
     description TEXT not null,
     company_name varchar(100) not null,
-    created_at DATETIME,
+    created_at timestamp default current_timestamp,
     expires_on DATETIME not null,
     posted_by int,
     is_active boolean DEFAULT false,
     CONSTRAINT fk_alumni_id_job FOREIGN KEY (posted_by) REFERENCES alumni(id)
 )
+

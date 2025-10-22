@@ -10,4 +10,7 @@ create table if not exists users (
     created_at timestamp default current_timestamp
 );
 
--- alter table users auto_increment = 0;
+-- alter table users RENAME column 
+-- name to first_name;
+-- alter table users add column 
+-- last_name varchar(100) after first_name;
