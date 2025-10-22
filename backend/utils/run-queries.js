@@ -2,7 +2,7 @@ import fs from 'fs';
 
 export async function runQueries(connection) {
 
-    const queriesToRun = fs.readFileSync('./models/job.model.sql', 'utf-8');
+    const queriesToRun = fs.readFileSync('./models/admin.sql', 'utf-8');
     const queries = queriesToRun.split(';');
     queries.forEach(async (query) => {
         if (query.trim()) {

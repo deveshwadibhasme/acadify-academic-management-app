@@ -36,14 +36,14 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 382.8414709135627,
-			"y": 560.979688175494,
-			"lastActivityTimestamp": 1760976821235,
+			"x": 958.7169084100695,
+			"y": 607.0247999298356,
+			"lastActivityTimestamp": 1761114954195,
 			"meta": {}
 		},
 		{
-			"x": 489.5328785019394,
-			"y": 582.8754354972896,
+			"x": 496.1891742242469,
+			"y": 566.2346961915208,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -265,9 +265,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 355.8249888116692,
-			"y": -257.4181524576848,
-			"z": 0.7247295,
+			"x": -346.33770195778163,
+			"y": -326.3509631168662,
+			"z": 0.6009348392672308,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -620,9 +620,9 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:1chRkxONvmyXIaLHgnYCv"
+				"shape:dOkz3ddBTvAeb4vV8f4gp"
 			],
-			"hoveredShapeId": "shape:1chRkxONvmyXIaLHgnYCv",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -632,8 +632,8 @@
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": -294.87197032398507,
-			"y": 160.9592343454675,
+			"x": -292.65321354713365,
+			"y": 177.59997365123618,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -806,8 +806,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 839.7546082845085,
-			"y": 572.7710869081116,
+			"x": 841.9733396696068,
+			"y": 563.8960598007056,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1223,14 +1223,11 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:color": "black",
-				"tldraw:size": "l"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "default",
+				"type": "move",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -1240,8 +1237,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1123.3333740234375,
-				"h": 540
+				"w": 556,
+				"h": 508
 			},
 			"insets": [
 				false,
