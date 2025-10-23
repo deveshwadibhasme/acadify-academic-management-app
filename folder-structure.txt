@@ -41,3 +41,12 @@ https://cron-job.org/en/
 |    |    └────────── Day of month (1 - 31)
 |    └─────────────── Hour (0 - 23)
 └──────────────────── Minute (0 - 59)
+
+{
+    "first_name":"devesh",
+    "last_name":"wadibhasme",
+    "number":"9689479295",
+    "email":"devesh@gmail.com",
+    "password":"hehe",
+    "role":"student",
+}

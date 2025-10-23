@@ -15,3 +15,9 @@ so many new things to add/edit in my planning while developing so okay coming so
 i get to know about new library node-cron as i wants to run some of my functions every 24 hour so search about it and yes 
 but issue is i am using render free instances as it get turn pause when not access for some hour so my node-cron get a 
 restart again but okay let think about it ontime
+
+22 - 10 - 2025
+implemented signup by using sql first time and its working
+
+23-10-2025
+okay so user login code also done but still role based login in the stack

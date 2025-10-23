@@ -43,3 +43,5 @@ CREATE TABLE if not exists admin_jobs (
     FOREIGN KEY (admin_id) REFERENCES admin(id),
     FOREIGN KEY (job_id) REFERENCES job(id)
 );
+
+select * from users;
