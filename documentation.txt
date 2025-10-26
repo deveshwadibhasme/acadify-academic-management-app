@@ -21,3 +21,6 @@ implemented signup by using sql first time and its working
 
 23-10-2025
 okay so user login code also done but still role based login in the stack
+
+24-10-2025
+Wow my first Laptop actually second hand first laptop is shot 4th time repairing sir says sell it maybe i have to say byebye to it 🙂 again project delayed 
