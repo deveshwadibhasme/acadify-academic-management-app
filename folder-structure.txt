@@ -33,7 +33,6 @@ cron.schedule('0 * * * *', async () => {
 
 https://cron-job.org/en/
 
-
 *    *    *    *    *
 |    |    |    |    |
 |    |    |    |    └── Day of week (0 - 6)
@@ -43,7 +42,6 @@ https://cron-job.org/en/
 └──────────────────── Minute (0 - 59)
 
 const cron = require("node-cron");
-
 cron.schedule("0 */12 * * *", async () => {
   try {
     const [result] = await pool.query("DELETE FROM otp_store WHERE expires_at < NOW()");

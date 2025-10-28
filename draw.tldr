@@ -36,14 +36,14 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 584.8550330518078,
-			"y": 435.07042605888415,
-			"lastActivityTimestamp": 1761115073699,
+			"x": 924.2788309254056,
+			"y": 224.32257919199188,
+			"lastActivityTimestamp": 1761666279471,
 			"meta": {}
 		},
 		{
-			"x": 496.1891742242469,
-			"y": 566.2346961915208,
+			"x": 505.3868038293283,
+			"y": 584.6300606606028,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -265,9 +265,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -256.4777604901369,
-			"y": -45.67712630389673,
-			"z": 0.6009348392672308,
+			"x": 1170.489442883391,
+			"y": 74.60154082126476,
+			"z": 0.28992866734570033,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -620,9 +620,9 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:qefS7A-ahuR6gq-Ymg0tx"
+				"shape:1pPh3zoJMsFaH6LjDkL9j"
 			],
-			"hoveredShapeId": "shape:qefS7A-ahuR6gq-Ymg0tx",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -632,8 +632,8 @@
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": -292.65321354713365,
-			"y": 177.59997365123618,
+			"x": -288.0543461151333,
+			"y": 161.50404289815427,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -806,8 +806,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 841.9733396696068,
-			"y": 563.8960598007056,
+			"x": 844.2728260150665,
+			"y": 582.2914242697875,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -999,8 +999,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 841.1749926641419,
-			"y": 179.77391415918683,
+			"x": 841.1752031819797,
+			"y": 170.57625823937562,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1227,7 +1227,7 @@
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "default",
+				"type": "move",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -1237,8 +1237,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 556,
-				"h": 508
+				"w": 922,
+				"h": 365.3333435058594
 			},
 			"insets": [
 				false,
@@ -1266,8 +1266,8 @@
 			"typeName": "instance"
 		},
 		{
-			"x": 104.82271097538126,
-			"y": 560.6175785213811,
+			"x": 120.9185890990035,
+			"y": 585.9111915090039,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -1446,8 +1446,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 496.2372016810734,
-			"y": 183.27952764205398,
+			"x": 507.7344228905335,
+			"y": 178.6806865247835,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,

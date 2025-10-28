@@ -25,6 +25,8 @@ Coming soon
 - **ExpressJS**
 - **NodeJS**
 - **MySQL**
+- **Node Mailer**
+- **Node Cron**
 
 
 ## Contributing
