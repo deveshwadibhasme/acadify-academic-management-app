@@ -42,11 +42,22 @@ https://cron-job.org/en/
 |    └─────────────── Hour (0 - 23)
 └──────────────────── Minute (0 - 59)
 
+const cron = require("node-cron");
+
+cron.schedule("0 */12 * * *", async () => {
+  try {
+    const [result] = await pool.query("DELETE FROM otp_store WHERE expires_at < NOW()");
+    console.log(`🧹 OTP cleanup done. Deleted ${result.affectedRows} expired rows.`);
+  } catch (err) {
+    console.error("Error during OTP cleanup:", err);
+  }
+});
+
 {
     "first_name":"devesh",
     "last_name":"wadibhasme",
     "number":"9689479295",
-    "email":"devesh@gmail.com",
-    "password":"hehe",
-    "role":"student",
+    "email":"deveshwadibhasme.12@gmail.com",
+    "password":"1234",
+    "role":"student"
 }
