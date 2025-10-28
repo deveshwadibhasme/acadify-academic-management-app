@@ -2,16 +2,17 @@ import fs from 'fs';
 
 export async function runQueries(connection) {
 
-    const queriesToRun = fs.readFileSync('./models/admin.sql', 'utf-8');
-    const queries = queriesToRun.split(';');
-    queries.forEach(async (query) => {
-        if (query.trim()) {
+    // const queriesToRun = fs.readFileSync('./models/admin.sql', 'utf-8');
+    // const queries = queriesToRun.split(';');
+
+    // queries.forEach(async (query) => {
+        // if (query.trim()) {
             try {
-                await connection.query(query);
+                await connection.query('delete from users where first_name ="devesh"');
             } catch (error) {
                 console.error("Error executing query:", error);
             }
-        }
-    });
+        // }
+    // });
 
 }

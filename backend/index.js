@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 await pool.getConnection().then((connection) => {
 
-    runQueries(connection);
+    // runQueries(connection);
 
     console.log("Connected to the database");
     connection.release();
@@ -29,7 +29,6 @@ await pool.getConnection().then((connection) => {
 
 
 app.use('/auth', authRoute);
-
 
 
 app.listen(port, () => {
