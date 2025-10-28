@@ -27,3 +27,9 @@ Wow my first Laptop actually second hand first laptop is shot 4th time repairing
 
 28 - 10 - 2025
 Okay Laptop return from repairing center no bye bye to laptop for some month implemented otp registration system 
+
+okay more feature added in future for students to find mentor
+this project is like social media for one academic person to find the mentor from same college
+but i still dont have much idea how does i am gonna implement this but yes 
+
+"ideas improve as we work on them"
