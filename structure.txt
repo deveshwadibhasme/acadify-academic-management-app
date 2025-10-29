@@ -1,0 +1,99 @@
+backend/
+│── src/
+│   ├── config/         # Environment variables, DB config, API keys
+│   ├── routes/         # Route definitions (e.g. userRoutes.js, authRoutes.js)
+│   ├── controllers/    # Handle requests, call services (e.g. userController.js)
+│   ├── services/       # Business logic (e.g. userService.js)
+│   ├── models/         # Database models (Mongoose, Sequelize, Prisma, etc.)
+│   ├── middleware/     # Auth checks, logging, error handling
+│   ├── utils/          # Helper functions, constants
+│   ├── tests/          # Unit & integration tests
+│   └── app.js          # Express app setup (middleware, routes)
+│
+├── .env                # Environment variables
+├── package.json
+└── README.md
+-----------------------------------------------------------------------------------------
+
+### 🎨 **Primary Color Palette for Educational Website**
+
+| Element                        | Color Name          | HEX       | RGBA                     | Why / Usage                                                                                                   |
+| ------------------------------ | ------------------- | --------- | ------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| **Logo Background / Accent**   | *Royal Blue*        | `#2F80ED` | `rgba(47, 128, 237, 1)`  | Blue builds **trust** and **focus** — perfect for education branding. Use this in logo or key CTAs (buttons). |
+| **Header / Navbar Background** | **Navy Blue**       | `#0F3460` | `rgba(15, 52, 96, 1)`    | Dark tone gives **professionalism** and contrast against white text.                                          |
+| **Title / Headings (H1, H2)**  | **Dark Slate Gray** | `#2D3436` | `rgba(45, 52, 54, 1)`    | Neutral dark color for readability and contrast.                                                              |
+| **Subtitle / Secondary Text**  | **Dim Gray**        | `#636E72` | `rgba(99, 110, 114, 1)`  | Softer tone to differentiate from main heading.                                                               |
+| **Paragraph / Body Text**      | **Charcoal Gray**   | `#4A4A4A` | `rgba(74, 74, 74, 1)`    | Easy to read, balanced against light backgrounds.                                                             |
+| **Website Background**         | **Ghost White**     | `#F9FAFB` | `rgba(249, 250, 251, 1)` | Clean, subtle off-white background — reduces glare and feels modern.                                          |
+| **Highlight / Button Hover**   | **Sky Blue**        | `#56CCF2` | `rgba(86, 204, 242, 1)`  | Adds a friendly interactive tone without distraction.                                                         |
+| **Accent / Link Color**        | **Teal Green**      | `#00B894` | `rgba(0, 184, 148, 1)`   | A secondary accent to balance the blue; great for success messages or callouts.                               |
+| **Error / Warning (Optional)** | **Coral Red**       | `#EB5757` | `rgba(235, 87, 87, 1)`   | For alerts, warnings, or validation errors.                                                                   |
+
+---
+
+### ✅ **Recommended Use**
+
+* **Logo** → Royal Blue + White or Teal accent + 'K2D' & 'DM Serif Display'
+* **Website Background** → Ghost White.
+* **Header/Nav** → Navy Blue with white text.
+* **Buttons** → Royal Blue default, Sky Blue hover.
+* **Text** → Dark Slate for titles, Dim Gray for subtitles, Charcoal for paragraphs.
+
+Fonts 
+
+| Element             | Font             | Example Weight |
+| ------------------- | ---------------- | -------------- |
+| Logo                | Poppins Bold     | 700            |
+| Title / Heading     | Poppins SemiBold | 600            |
+| Subtitle            | Poppins Medium   | 500            |
+| Paragraph / Body    | Roboto Regular   | 400            |
+| Small Text / Footer | Roboto Light     | 300            |
+
+
+---------------------------------------------------------------------------------------
+
+import cron from 'node-cron';
+import db from './db.js'; // your MySQL connection
+
+cron.schedule('0 * * * *', async () => {
+  console.log('Running cron job: Deactivating expired jobs');
+
+  try {
+    const [result] = await db.query(
+      'UPDATE jobs SET is_active = FALSE WHERE expiry_date <= NOW() AND is_active = TRUE'
+    );
+    console.log(`Deactivated ${result.affectedRows} expired jobs`);
+  } catch (err) {
+    console.error('Error updating expired jobs:', err);
+  }
+},{ timezone: 'Asia/Kolkata' });
+
+https://cron-job.org/en/
+
+*    *    *    *    *
+|    |    |    |    |
+|    |    |    |    └── Day of week (0 - 6)
+|    |    |    └───── Month (1 - 12)
+|    |    └────────── Day of month (1 - 31)
+|    └─────────────── Hour (0 - 23)
+└──────────────────── Minute (0 - 59)
+
+const cron = require("node-cron");
+cron.schedule("0 */12 * * *", async () => {
+  try {
+    const [result] = await pool.query("DELETE FROM otp_store WHERE expires_at < NOW()");
+    console.log(`🧹 OTP cleanup done. Deleted ${result.affectedRows} expired rows.`);
+  } catch (err) {
+    console.error("Error during OTP cleanup:", err);
+  }
+});
+
+-------------------------------------------------------------------------------------------
+{
+    "first_name":"devesh",
+    "last_name":"wadibhasme",
+    "number":"9689479295",
+    "email":"deveshwadibhasme.12@gmail.com",
+    "password":"1234",
+    "role":"student"
+}
