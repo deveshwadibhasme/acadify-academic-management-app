@@ -1,8 +1,10 @@
 # Student Management System
 
-Manage alumni,students,events and many more related to school/college to maitain all of your school/college stuff at one place
+It's for entire school/college/institute to manage all the students and also for students to find those who passed out from school and in a good position or a business to get mentor of their own school.(Alumni)
 
-More description coming soon.....
+Description is not descriptive although I just started with one idea
+
+Mark Zuckerberg says: Ideas improves while working on it
 
 ## Features
 
