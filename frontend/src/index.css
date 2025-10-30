@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+
+*::placeholder{
+  font-size: 13px;
+  position: absolute;
+  top: 8px;
+}
+
 #root {
   margin: 0 auto;
   min-height: 100vh;

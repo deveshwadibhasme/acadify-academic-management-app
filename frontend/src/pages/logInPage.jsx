@@ -5,7 +5,7 @@ const LogInPage = () => {
   const url = BACKEND_URL;
 
   return (
-    <div>
+    <div className="flex justify-center">
       LOG_IN
     </div>
   );
