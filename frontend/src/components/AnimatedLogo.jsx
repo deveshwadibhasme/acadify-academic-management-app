@@ -19,10 +19,11 @@ const AnimatedLogo = () => {
         className="w-30 h-12 bg-gradient-to-r from-[#06408C] to-[#2F80ED] absolute -right-22 top-2 rounded-2xl"
       >
         <motion.span
+          style={{color:"white", fontfamily: 'DM Serif Display", sans-serif',fontSize:'35px'}}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="absolute z-15 font-logo text-white text-[40px] left-2 -top-1"
+          className="absolute z-15 font-logo text-white text-[40px] left-2 "
         >
           cadify
         </motion.span>

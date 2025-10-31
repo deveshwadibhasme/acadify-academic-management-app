@@ -25,6 +25,18 @@ body {
   background-color: #b5cce4;
 }
 
+button,span,h4{
+  @apply font-subtitle font-subtitle-wt text-title-headings;
+}
+
+input,p{
+  @apply font-paragraph-body;
+}
+
+h1,h2{
+  @apply font-title-heading;
+}
+
 @theme{
   --color-logo-background: #2F80ED;
   --color-header-background: #0F3460;
@@ -35,6 +47,9 @@ body {
   --color-highlight-hover: #56CCF2;
   --color-accent-link: #00B894;
   --color-error-warning: #EB5757;
+  --color-sooth-green: #C8E6C9;
+;
+
 
   --font-logo: "DM Serif Display", sans-serif;
   --font-title-heading: "Poppins", sans-serif;
@@ -43,9 +58,9 @@ body {
   --font-small-footer: "Roboto", sans-serif;
 
   --font-weight-logo: 700;
-  --font-weight-title-heading: 600;
-  --font-weight-subtitle: 500;
-  --font-weight-paragraph-body: 400;
+  --font-weight-title-wt: 600;
+  --font-weight-subtitle-wt: 500;
+  --font-weight-paragraph-wt: 400;
   --font-weight-small-footer: 300;
   
 }

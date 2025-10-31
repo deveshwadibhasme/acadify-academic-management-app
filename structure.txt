@@ -97,3 +97,33 @@ cron.schedule("0 */12 * * *", async () => {
     "password":"1234",
     "role":"student"
 }
+
+
+------------------------------------------------------------------------------------
+
+import React, { useState } from "react";
+import Autocomplete from "react-autocomplete";
+
+function App() {
+  const [value, setValue] = useState("");
+  const items = [
+    { id: 1, label: "Apple" },
+    { id: 2, label: "Banana" },
+    { id: 3, label: "Cherry" }
+  ];
+
+  return (
+    <Autocomplete
+      getItemValue={(item) => item.label}
+      items={items}
+      renderItem={(item, isHighlighted) => (
+        <div style={{ background: isHighlighted ? "#eee" : "#fff", padding: 8 }}>
+          {item.label}
+        </div>
+      )}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      onSelect={(val) => setValue(val)}
+    />
+  );
+}
