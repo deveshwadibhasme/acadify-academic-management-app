@@ -47,8 +47,6 @@ const verifyOTPandRegisterUser = async (req, res) => {
     try {
 
         const [rows] = await pool.query('Select * from otp_store where email = ? and expire_at > NOW()', [email])
-
-
         if (Number(rows[0].otp_value) !== Number(otp)) return res.status(401).json(createRes('warning', 'Incorrect or Expired OTP'))
 
         await pool.query(`DELETE FROM otp_store WHERE email = ?`, [email]);
@@ -79,9 +77,11 @@ const userLogin = async (req, res) => {
 
         if (!isValid) return res.status(401).json(createRes('warning', 'Incorrect Password or Credential'))
 
-        const token = jwt.sign({ id: user[0].id, email: user[0].email, role: user[0].role }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ id: user[0].id, email: user[0].email, role: user[0].role }, 
+            process.env.JWT_SECRET, { expiresIn: "1h" });
 
-        return res.status(200).json(createRes('success', 'User Authenticated Successfully', { token: token, role: user[0].role, name: user[0].first_name }))
+        return res.status(200).json(createRes('success', 'User Authenticated Successfully', 
+            { token: token, role: user[0].role, name: user[0].first_name }))
 
     } catch (error) {
         console.error(error)

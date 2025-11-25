@@ -127,3 +127,20 @@ function App() {
     />
   );
 }
+
+-------------------------------------------------------------------------------------
+Handle Student Account Creation
+Your logic is correct: when a student creates an account and selects an admin, you need to record that relationship. Here's how you do it with your current structure:
+
+A new record is created in the users table.
+A new record is created in the student table, linked to the new user via user_id. Let's say the new student.id is 123.
+The student selects an admin during signup. Let's say the admin.id is 45.
+You then insert a new row into the admin_students table: (admin_id, student_id) with the values (45, 123).
+This correctly establishes the link without changing the student table structure.
+
+A Small Suggestion for student.model.sql
+Your student table looks good. However, the student_id in the admin_students table references student(id). Your student table has a primary key id, but it also has a column named student_id which seems to be for a human-readable ID (like a university roll number). This can be a bit confusing.
+
+The foreign key in admin_students correctly points to student(id), which is the auto-incrementing primary key. This is the right way to do it. Just be mindful of the column naming to avoid confusion between student.id (the primary key) and student.student_id (the business-logic ID).
+
+In summary: Stick with your admin_students junction table. It's the correct, more flexible, and consistent approach. Do not add admin_id to the student table.

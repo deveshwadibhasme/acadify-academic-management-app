@@ -1,7 +1,7 @@
 use student_management_app;
 
 create table if not exists alumni (
-    id int,
+    id int PRIMARY KEY AUTO_INCREMENT,
     batch_year date,
     degree varchar(50),
     department varchar(50),
@@ -12,7 +12,7 @@ create table if not exists alumni (
     CONSTRAINT fk_user_id FOREIGN KEY (id) REFERENCES users(id)
 );
 
-ALTER TABLE alumni RENAME COLUMN id TO user_id;
-ALTER TABLE alumni
-ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+-- ALTER TABLE alumni RENAME COLUMN id TO user_id;
+-- ALTER TABLE alumni
+-- ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT FIRST;
 
