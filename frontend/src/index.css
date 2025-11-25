@@ -1,54 +1,16 @@
 @import "tailwindcss";
 
-
-*::placeholder{
-  font-size: 13px;
-  position: absolute;
-  top: 8px;
-}
-
-#root {
-  margin: 0 auto;
-  min-height: 100vh;
-  max-width: 100vw;
-  max-width: 1280px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  @apply bg-website-background
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #b5cce4;
-}
-
-button,span,h4{
-  @apply font-subtitle font-subtitle-wt text-title-headings;
-}
-
-input,p{
-  @apply font-paragraph-body;
-}
-
-h1,h2{
-  @apply font-title-heading;
-}
-
-@theme{
-  --color-logo-background: #2F80ED;
-  --color-header-background: #0F3460;
-  --color-title-headings: #2D3436;
-  --color-subtitle-text: #636E72;
-  --color-paragraph-text: #4A4A4A;
+@theme {
+  --color-logo-background: #2f80ed;
+  --color-header-background: #0f3460;
+  --color-title-headings: #2d3436;
+  --color-subtitle-text: #636e72;
+  --color-paragraph-text: #4a4a4a;
   --color-website-background: #b5cce4;
-  --color-highlight-hover: #56CCF2;
-  --color-accent-link: #00B894;
-  --color-error-warning: #EB5757;
-  --color-sooth-green: #C8E6C9;
-
+  --color-highlight-hover: #56ccf2;
+  --color-accent-link: #00b894;
+  --color-error-warning: #eb5757;
+  --color-sooth-green: #c8e6c9;
 
   --font-logo: "Poppins", sans-serif;
   --font-title-heading: "Poppins", sans-serif;
@@ -61,5 +23,44 @@ h1,h2{
   --font-weight-subtitle-wt: 500;
   --font-weight-paragraph-wt: 400;
   --font-weight-small-footer: 300;
-  
+}
+
+*::placeholder {
+  font-size: 13px;
+  position: absolute;
+  top: 8px;
+}
+
+#root {
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @apply bg-website-background;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #b5cce4;
+}
+
+button,
+span,
+h4 {
+  @apply font-subtitle font-subtitle-wt text-title-headings;
+}
+
+input,
+p {
+  @apply font-paragraph-body;
+}
+
+h1,
+h2 {
+  @apply font-title-heading;
 }

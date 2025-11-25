@@ -13,7 +13,7 @@ const root = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <AnimatedLogoLayout className={`bg-gradient-to-tr from-teal-400 via-sky-400 to-logo-background`}>
+      <AnimatedLogoLayout>
         <Suspense fallback={<Loading />}>
           <LogInPage />
         </Suspense>
@@ -31,7 +31,7 @@ const root = createBrowserRouter([
   {
     path: "/signup",
     element: (
-      <AnimatedLogoLayout className={`bg-gradient-to-tr from-teal-400 via-sky-400 to-logo-background`}>
+      <AnimatedLogoLayout>
         <Suspense fallback={<Loading />}>
           <SignUpPage />
         </Suspense>

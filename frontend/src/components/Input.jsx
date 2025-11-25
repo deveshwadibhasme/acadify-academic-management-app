@@ -1,17 +1,27 @@
-
-
-const Input = ({ type, className, id, placeholder, onChange, value, label,name }) => {
+const Input = ({
+  type,
+  className,
+  id,
+  placeholder,
+  onChange,
+  value,
+  label,
+  name,
+  maxLimit,
+  hidden
+}) => {
   return (
-    <div className="flex flex-col gap-1 w-full">
+    <div className={`flex-col gap-1 w-full h-15 ${hidden ? 'hidden' : 'flex'}`}>
       <label
         htmlFor={id}
-        className="block text-sm font-subtitle font-semibold text-subtitle-text"
+        className="block text-sm font-subtitle font-semibold text-subtitle-text h-5"
       >
         {label}
       </label>
       <input
         type={type}
         autoComplete="off"
+        maxLength={maxLimit}
         className={
           type === "checkbox"
             ? className
@@ -22,7 +32,6 @@ const Input = ({ type, className, id, placeholder, onChange, value, label,name }
         onChange={onChange}
         value={value}
         name={name}
-        
       ></input>
     </div>
   );

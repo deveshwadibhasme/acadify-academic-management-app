@@ -19,20 +19,14 @@ const AnimatedLogoLayout = ({ children, className }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-screen w-full min-h-screen flex items-center justify-center bg-white"
+          className="max-w-screen w-full min-h-screen flex items-center justify-center bg-white/50"
         >
           <AnimatedLogo />
         </motion.div>
       ) : (
-        <motion.div
-          key="main-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className={`max-w-screen w-full min-h-screen ${className}`}
-        >
+        <>
           {children}
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
