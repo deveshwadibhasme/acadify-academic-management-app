@@ -8,10 +8,11 @@ const Input = ({
   label,
   name,
   maxLimit,
-  hidden
+  hidden,
+  wrapperClass
 }) => {
   return (
-    <div className={`flex-col gap-1 w-full h-15 ${hidden ? 'hidden' : 'flex'}`}>
+    <div className={`flex-col gap-1 w-full h-15 ${hidden ? 'hidden' : 'flex'} ${wrapperClass}`}>
       <label
         htmlFor={id}
         className="block text-sm font-subtitle font-semibold text-subtitle-text h-5"
