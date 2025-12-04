@@ -34,6 +34,7 @@ const Input = ({
         onChange={onChange}
         value={value}
         name={name}
+        required
       ></input> 
     </div>
   );

@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import axios from "axios";
 
-import SignUpForm from "../components/layouts/signUpForm";
+import SignUpForm from "../components/layouts/SignUpForm";
 import getURL from "../utils/get-url";
-import VerificationForm from "../components/layouts/verificationForm";
+import VerificationForm from "../components/layouts/VerificationForm";
+import { ToastContainer } from "react-toastify";
+import useToaster from "../hooks/useToaster";
+import Button from "../components/Button";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -16,12 +18,15 @@ const SignUpPage = () => {
     number: "",
     gender: "",
     role: "",
-    otp:""
+    otp: "",
   });
 
   const [verified, setVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState(true);
 
-  const navigate = useNavigate();
+  const { showToast } = useToaster();
+
+  showToast("info","Sign Up As New User")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,27 +38,43 @@ const SignUpPage = () => {
       if (response.type !== "success") {
         throw new Error("Internal Error");
       }
-      alert(response.message);
+      showToast(response.type, response.message);
       setVerified(!verified);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleVerification= async (e) => {
+  const handleVerification = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post(getURL("/auth/user/verify-and-register"), formData);
+      const result = await axios.post(
+        getURL("/auth/user/verify-and-register"),
+        formData
+      );
 
       const response = result.data;
-      console.log(response);
+      showToast(response.type, response.message);
+
       if (response.type !== "success") {
+        showToast("error",error.response.data.message);
         throw new Error("Internal Error");
       }
-      
-      navigate('/login')
+      setFormData({
+        email: "",
+        password: "",
+        name: "",
+        last_name: "",
+        number: "",
+        gender: "",
+        role: "",
+        otp: "",
+      });
+
+      setVerified(!isVerified);
     } catch (error) {
       console.error(error);
+      showToast("error", error.response.data.message);
     }
   };
 
@@ -64,8 +85,6 @@ const SignUpPage = () => {
     }));
   };
 
-  console.log(formData);
-
   return (
     <>
       <div className="flex items-center flex-col gap-1.5 max-w-screen min-h-screen relative w-full bg-gradient-to-tr from-teal-400 via-sky-400 to-logo-background">
@@ -75,14 +94,24 @@ const SignUpPage = () => {
               handleChange={handleChange}
               handleSubmit={handleSubmit}
             />
-          ) : (
+          ) : isVerified ? (
             <VerificationForm
               handleChange={handleChange}
               handleSubmit={handleVerification}
               email={formData.email}
             />
+          ) : (
+            <Button
+              toLink={"/login"}
+              isLink={true}
+              type="button"
+              className="translate-y-23"
+            >
+              Log In <UserCheckIcon size={20} className="ml-2" />
+            </Button>
           )}
         </AnimatePresence>
+        <ToastContainer />
       </div>
     </>
   );

@@ -26,6 +26,7 @@ const Select = ({
         onChange={onChange}
         // value={value}
         name={name}
+        required
       >
         <option value={placeHolder}>
           {placeHolder}
