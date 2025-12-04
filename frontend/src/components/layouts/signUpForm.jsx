@@ -11,7 +11,7 @@ const signUpForm = ({ handleChange, handleSubmit }) => {
       initial={{ opacity: 0.6 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, x: -30 }}
-      className="max-w-xl absolute top-1/4 w-full h-auto bg-white/60 rounded-xl overflow-hidden backdrop-blur-md p-4 transition-all duration-500 flex items-center flex-col gap-y-8"
+      className="max-w-xl absolute top-30 w-full h-auto bg-white/60 rounded-xl overflow-hidden backdrop-blur-md p-4 transition-all duration-500 flex items-center flex-col gap-y-8"
     >
       <Input
         onChange={handleChange}

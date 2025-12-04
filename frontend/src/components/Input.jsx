@@ -9,7 +9,8 @@ const Input = ({
   name,
   maxLimit,
   hidden,
-  wrapperClass
+  wrapperClass,
+  children,
 }) => {
   return (
     <div className={`flex-col gap-1 w-full h-15 ${hidden ? 'hidden' : 'flex'} ${wrapperClass}`}>
@@ -33,7 +34,7 @@ const Input = ({
         onChange={onChange}
         value={value}
         name={name}
-      ></input>
+      ></input> 
     </div>
   );
 };

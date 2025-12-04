@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import BACKEND_URL from "../utils/connect-api";
+// import BACKEND_URL from "../utils/connect-api";
 import { getImageLink } from "../utils/get-image-link";
 
 const LogInPage = () => {
-  const url = BACKEND_URL;
+  // const url = BACKEND_URL;
 
   const { state } = useLocation();
 
