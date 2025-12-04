@@ -8,6 +8,7 @@ create table if not exists student (
     class varchar(50),
     department varchar(50),
     mentors varchar(50),
+    institute_id int not null,
     CONSTRAINT fk_user_id_stud FOREIGN KEY (user_id) REFERENCES users (id)
 );
 

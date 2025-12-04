@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <Outlet context={showToast} />
+      <Outlet context={{ showToast }} />
       <ToastContainer />
     </>
   );

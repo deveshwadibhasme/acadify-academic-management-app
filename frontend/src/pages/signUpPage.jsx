@@ -34,7 +34,6 @@ const SignUpPage = () => {
       const result = await axios.post(getURL("/auth/user/signup"), formData);
 
       const response = result.data;
-      console.log(response);
       if (response.type !== "success") {
         throw new Error("Internal Error");
       }

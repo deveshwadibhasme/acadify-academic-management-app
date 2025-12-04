@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logOut = (data) => {
+  const logOut = () => {
     setToken("");
     setData("");
     localStorage.removeItem("token");

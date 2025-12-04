@@ -23,7 +23,7 @@ const userSignup = async (req, res) => {
         }
         const otp = generateOTP()
 
-        sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
+        // sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
 
         await pool.query(`insert into otp_store 
             (email, otp_value, expire_at ) 
@@ -66,14 +66,14 @@ const verifyOTPandRegisterUser = async (req, res) => {
 }
 
 const userLogin = async (req, res) => {
-    const { email, number, password, role } = req.body
+    const { email, password } = req.body
 
-    if (!email || !number && !password && !role) res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
+    if (!email || !password) res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
 
     try {
         const [user] = await pool.query('select * from users where email = ?', [email])
 
-        const isValid = await bcrypt.compare(password, user[0]?.password)
+        const isValid = await bcrypt.compare(password, user[0].password)
 
         if (!isValid) return res.status(401).json(createRes('warning', 'Incorrect Password or Credential'))
 

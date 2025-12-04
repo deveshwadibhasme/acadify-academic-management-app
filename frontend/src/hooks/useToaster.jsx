@@ -4,8 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 const useToaster = () => {
   const showToast = (type = "success", message) => {
     const options = {
-      position: "top-right",
-      autoClose: 5000,
+      position: "top-center",
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
