@@ -23,7 +23,7 @@ const userSignup = async (req, res) => {
         }
         const otp = generateOTP()
 
-        sendEmail(email,"OTP for Verification",`Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
+        sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
 
         await pool.query(`insert into otp_store 
             (email, otp_value, expire_at ) 
@@ -38,16 +38,16 @@ const userSignup = async (req, res) => {
 }
 
 const verifyOTPandRegisterUser = async (req, res) => {
-    const { first_name, last_name, email, password, number, role, otp } = req.body
+    const { name, last_name, email, password, number, role, otp } = req.body
 
-    if (!first_name, !email, !password, !number, !role, !otp) {
+    if (!name || !email || !password || !number || !role || !otp) {
         res.status(400).json(createRes('warning', 'All field are required'))
     }
 
     try {
 
         const [rows] = await pool.query('Select * from otp_store where email = ? and expire_at > NOW()', [email])
-        if (Number(rows[0].otp_value) !== Number(otp)) return res.status(401).json(createRes('warning', 'Incorrect or Expired OTP'))
+        if (Number(rows[0].otp_value) !== Number(otp) || rows.length < 0) return res.status(401).json(createRes('warning', 'Incorrect or Expired OTP'))
 
         await pool.query(`DELETE FROM otp_store WHERE email = ?`, [email]);
 
@@ -55,7 +55,7 @@ const verifyOTPandRegisterUser = async (req, res) => {
 
         await pool.query(`insert into users 
                (first_name, last_name, email, password, number, role) 
-               values (?,?,?,?,?,?)`, [first_name, last_name, email, hashedPassword, number, role])
+               values (?,?,?,?,?,?)`, [name, last_name, email, hashedPassword, number, role])
 
         res.status(201).json(createRes('success', 'User Registered Succesfully'))
 
@@ -77,10 +77,10 @@ const userLogin = async (req, res) => {
 
         if (!isValid) return res.status(401).json(createRes('warning', 'Incorrect Password or Credential'))
 
-        const token = jwt.sign({ id: user[0].id, email: user[0].email, role: user[0].role }, 
+        const token = jwt.sign({ id: user[0].id, email: user[0].email, role: user[0].role },
             process.env.JWT_SECRET, { expiresIn: "1h" });
 
-        return res.status(200).json(createRes('success', 'User Authenticated Successfully', 
+        return res.status(200).json(createRes('success', 'User Authenticated Successfully',
             { token: token, role: user[0].role, name: user[0].first_name }))
 
     } catch (error) {

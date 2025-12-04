@@ -5,7 +5,7 @@ import { userLogin, userSignup, verifyOTPandRegisterUser } from '../controllers/
 const router = express.Router()
 
 router.post('/user/signup', userSignup)
-router.post('/user/verify-otp',verifyOTPandRegisterUser)
+router.post('/user/verify-and-register',verifyOTPandRegisterUser)
 
 router.post('/user/login', userLogin)
 
