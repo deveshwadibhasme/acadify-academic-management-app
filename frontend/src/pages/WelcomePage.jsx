@@ -4,7 +4,7 @@ import { User2, User2Icon, UserCheck2Icon, UserCheckIcon } from "lucide-react";
 
 const WelcomePage = () => {
   return (
-    <>
+    <div className="max-w-screen min-h-screen flex items-center flex-col justify-center">
       <AnimatedLogo />
       <h1 className="text-xl font-subtitle absolute bottom-15">
         Site Under Development......
@@ -27,7 +27,7 @@ const WelcomePage = () => {
           Log In <UserCheckIcon size={20} className="ml-2" />
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

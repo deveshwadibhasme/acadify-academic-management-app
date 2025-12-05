@@ -31,6 +31,7 @@ const Button = ({ children, className, type, motion, isLink, toLink, onClick }) 
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         type={type}
+        onClick={onClick}
         className={`py-2 px-6 transition cursor-pointer group min-w-20 bg-sooth-green rounded-xl flex items-center justify-between ${className}`}
       >
         {children}

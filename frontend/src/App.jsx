@@ -25,10 +25,12 @@ function App() {
 
   return isLogIn ? (
     <AnimatedLogoLayout>
-      <Header />
-      <SideBar />
-      <Outlet context={{ showToast }} />
-      <ToastContainer />
+      <section className="grid grid-cols-[0.06fr_1fr] grid-rows-[0fr_1fr] min-h-screen max-w-screen gap-0">
+        <Header />
+        <SideBar />
+        <Outlet context={{ showToast }} />
+        <ToastContainer />
+      </section>
     </AnimatedLogoLayout>
   ) : (
     <WelcomePage />
