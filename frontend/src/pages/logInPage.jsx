@@ -28,6 +28,8 @@ const LogInPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if(formData.email === "" || formData.password === "") return
+
       const result = await axios.post(getURL("/auth/user/login"), formData);
 
       const response = result.data;

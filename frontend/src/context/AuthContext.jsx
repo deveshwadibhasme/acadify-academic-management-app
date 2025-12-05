@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,27 +13,46 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [data, setData] = useState();
-  const [token, setToken] = useState(() => localStorage.getItem("token"));
-
   const navigate = useNavigate();
+  const [data, setData] = useState(null);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const token = await cookieStore.get("token");
+      setToken(token?.value);
+      try {
+        const data = await cookieStore.get("data");
+        setData(JSON.parse(data?.value));
+      } catch (error) {
+        console.log("Error parsing data from cookie:");
+      }
+    };
+    loadData();
+  }, []);
 
   const logIn = (data) => {
-    setToken(data.token);
-    setData(data);
-    localStorage.setItem("token", data.token);
-    if (data.role == "student") {
-      navigate("/student");
-    }
-    if (data.role == "alumni") {
-      navigate("/alumni");
-    }
+    cookieStore.set("token", data.token, {
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    cookieStore.set("data", JSON.stringify(data), {
+      maxAge: 60 * 60 * 24 * 7,
+    });
+    // if (data.role == "student") {
+    //   navigate("/student");
+    // }
+    // if (data.role == "alumni") {
+    //   navigate("/alumni");
+    // }
+    navigate("/")
   };
 
   const logOut = () => {
-    setToken("");
-    setData("");
-    localStorage.removeItem("token");
+    setToken(null);
+    setData(null);
+    cookieStore.delete("token");
+    cookieStore.delete("data");
     navigate("/login");
   };
 

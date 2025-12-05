@@ -1,21 +1,32 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage";
 import { useAuth } from "./context/AuthContext";
 import useToaster from "./hooks/useToaster";
 import { ToastContainer } from "react-toastify";
+import { useEffect, useState } from "react";
 
 function App() {
-  const { token } = useAuth();
-
+  const { token, data } = useAuth();
+  const navigate = useNavigate();
   const { showToast } = useToaster();
+  const [isLogIn,setIsLogIn] = useState(true)
 
-  if (!token) return <WelcomePage />;
+  useEffect(() => {
+    if (token !== undefined && data?.role === "student") navigate("/student");
+    if (token !== undefined && data?.role === "alumni") navigate("/alumni");
+    if (token === undefined) {
+      navigate("/")
+      setIsLogIn(false)
+    };
+  }, [token]);
 
-  return (
+  return isLogIn ? (
     <>
       <Outlet context={{ showToast }} />
       <ToastContainer />
     </>
+  ) : (
+    <WelcomePage />
   );
 }
 
