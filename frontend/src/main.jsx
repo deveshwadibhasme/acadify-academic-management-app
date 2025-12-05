@@ -26,21 +26,17 @@ const root = createBrowserRouter([
       {
         path: "/student",
         element: (
-          <AnimatedLogoLayout>
             <Suspense fallback={<Loading />}>
               <StudentBoard />
             </Suspense>
-          </AnimatedLogoLayout>
         ),
       },
       {
         path: "/alumni",
         element: (
-          <AnimatedLogoLayout>
             <Suspense fallback={<Loading />}>
               <AlumniBoard />
             </Suspense>
-          </AnimatedLogoLayout>
         ),
       },
     ],
