@@ -46,7 +46,8 @@ const LogInPage = () => {
   };
 
   return (
-    <div className="flex justify-center bg-gradient-to-tr w-full items-center h-full min-h-screen from-teal-400 via-sky-400 to-logo-background">
+    <div className="flex justify-center w-full h-full min-h-screen">
+      <h1 className="mt-10 text-3xl text-title-headings text-shadow-lg font-bold uppercase">Log In to accesss your space</h1>
       <motion.form
         onSubmit={(e) => e.preventDefault()}
         initial={{ opacity: 0.6 }}
@@ -73,7 +74,7 @@ const LogInPage = () => {
           onClick={handleSubmit}
           motion={motion}
           type={"button"}
-          className=" hover:bg-accent-link"
+          className=" hover:bg-accent-link bg-white shadow-2xl"
         >
           Proceed
           <ArrowRightCircle

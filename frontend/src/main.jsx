@@ -5,8 +5,8 @@ import React, { Suspense, lazy } from "react";
 import Loading from "./components/layouts/Loading.jsx";
 import AnimatedLogoLayout from "./components/layouts/AnimatedLogoLayout.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
-import StudentBoard from "./pages/studentBoard.jsx";
-import AlumniBoard from "./pages/alumniBoard.jsx";
+import StudentBoard from "./pages/StudentBoard.jsx";
+import AlumniBoard from "./pages/AlumniBoard.jsx";
 
 const App = lazy(() => import("./App.jsx"));
 const LogInPage = lazy(() => import("./pages/LogInPage.jsx"));

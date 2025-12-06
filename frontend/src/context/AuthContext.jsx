@@ -31,21 +31,25 @@ export const AuthProvider = ({ children }) => {
     loadData();
   }, []);
 
-  const logIn = (data) => {
-    cookieStore.set("token", data.token, {
-      maxAge: 60 * 60 * 24 * 7,
+  const logIn = async (data) => {
+    await cookieStore.set({
+      name: "token",
+      value: data.token,
+      expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     });
-
-    cookieStore.set("data", JSON.stringify(data), {
-      maxAge: 60 * 60 * 24 * 7,
+    await cookieStore.set({
+      name: "data",
+      value: JSON.stringify(data),
+      expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     });
-    // if (data.role == "student") {
-    //   navigate("/student");
-    // }
-    // if (data.role == "alumni") {
-    //   navigate("/alumni");
-    // }
-    navigate("/")
+    // location.reload()
+    if (data.role == "student") {
+      navigate("/student");
+    }
+    if (data.role == "alumni") {
+      navigate("/alumni");
+    }
+    navigate("/");
   };
 
   const logOut = () => {

@@ -26,10 +26,12 @@ const SignUpPage = () => {
 
   const { showToast } = useToaster();
 
-  showToast("info","Sign Up As New User")
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(formData.email === "" || formData.password === "") {
+      showToast("info","Type Your Credentials")
+      return
+    }
     try {
       const result = await axios.post(getURL("/auth/user/signup"), formData);
 
@@ -86,7 +88,8 @@ const SignUpPage = () => {
 
   return (
     <>
-      <div className="flex items-center flex-col gap-1.5 max-w-screen min-h-screen relative w-full bg-gradient-to-tr from-teal-400 via-sky-400 to-logo-background">
+      <div className="flex items-center flex-col gap-1.5 max-w-screen min-h-screen relative w-full ">
+        <h1 className="mt-10 text-3xl text-title-headings text-shadow-lg font-bold uppercase">Sign Up to get into your space</h1>
         <AnimatePresence mode="wait">
           {!verified ? (
             <SignUpForm
