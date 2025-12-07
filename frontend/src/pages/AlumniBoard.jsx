@@ -1,10 +1,13 @@
 import React from "react";
 import useToaster from "../hooks/useToaster";
-import { useOutletContext } from "react-router-dom";
+import WelcomeUser from "../components/layouts/WelcomeUser";
 
 const AlumniBoard = () => {
-
-  return <div>AlumniBoard</div>;
+  return (
+    <section className="max-w-screen row-start-2 row-end-auto col-start-2 col-end-3 w-full h-full">
+      <WelcomeUser />
+    </section>
+  );
 };
 
 export default AlumniBoard;

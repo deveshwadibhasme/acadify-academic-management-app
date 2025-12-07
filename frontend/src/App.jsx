@@ -9,17 +9,21 @@ import SideBar from "./components/layouts/SideBar";
 import AnimatedLogoLayout from "./components/layouts/AnimatedLogoLayout";
 
 function App() {
-  const { token, data } = useAuth();
+  const { token, data, isLogIn } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToaster();
-  const [isLogIn, setIsLogIn] = useState(true);
+
+  console.log(isLogIn);
 
   useEffect(() => {
-    if (token !== undefined && data?.role === "student") navigate("/student");
-    if (token !== undefined && data?.role === "alumni") navigate("/alumni");
+    if (token !== undefined && data?.role === "student") {
+      navigate("/student");
+    }
+    if (token !== undefined && data?.role === "alumni") {
+      navigate("/alumni");
+    }
     if (token === undefined) {
       navigate("/");
-      setIsLogIn(false);
     }
   }, [token]);
 

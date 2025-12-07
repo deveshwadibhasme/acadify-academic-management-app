@@ -11,7 +11,7 @@ const userSignup = async (req, res) => {
     const { email, number } = req.body
 
     if (!email) {
-        res.status(400).json(createRes('warning', 'All field are required'))
+        return res.status(400).json(createRes('warning', 'All field are required'))
     }
 
     try {
@@ -23,7 +23,7 @@ const userSignup = async (req, res) => {
         }
         const otp = generateOTP()
 
-        // sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
+        sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
 
         await pool.query(`insert into otp_store 
             (email, otp_value, expire_at ) 
@@ -41,7 +41,7 @@ const verifyOTPandRegisterUser = async (req, res) => {
     const { name, last_name, email, password, number, role, otp } = req.body
 
     if (!name || !email || !password || !number || !role || !otp) {
-        res.status(400).json(createRes('warning', 'All field are required'))
+        return res.status(400).json(createRes('warning', 'All field are required'))
     }
 
     try {
@@ -57,7 +57,7 @@ const verifyOTPandRegisterUser = async (req, res) => {
                (first_name, last_name, email, password, number, role) 
                values (?,?,?,?,?,?)`, [name, last_name, email, hashedPassword, number, role])
 
-        res.status(201).json(createRes('success', 'User Registered Succesfully'))
+        return res.status(201).json(createRes('success', 'User Registered Succesfully'))
 
     } catch (error) {
         console.log(error);
@@ -68,7 +68,7 @@ const verifyOTPandRegisterUser = async (req, res) => {
 const userLogin = async (req, res) => {
     const { email, password } = req.body
 
-    if (!email || !password) res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
+    if (!email || !password) return res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
 
     try {
         const [user] = await pool.query('select * from users where email = ?', [email])

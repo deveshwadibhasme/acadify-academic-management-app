@@ -6,3 +6,5 @@ node_modules/
 .env.*
 .vscode
 
+backend/config/connect-sql.js
+backend/config/connect-sql.js

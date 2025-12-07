@@ -47,7 +47,7 @@ const LogInPage = () => {
 
   return (
     <div className="flex justify-center w-full h-full min-h-screen">
-      <h1 className="mt-10 text-3xl text-title-headings text-shadow-lg font-bold uppercase">Log In to accesss your space</h1>
+      <h1 className="mt-10 text-3xl text-title-headings text-center text-shadow-lg font-bold uppercase">Log In to accesss your space</h1>
       <motion.form
         onSubmit={(e) => e.preventDefault()}
         initial={{ opacity: 0.6 }}
@@ -73,7 +73,7 @@ const LogInPage = () => {
         <Button
           onClick={handleSubmit}
           motion={motion}
-          type={"button"}
+          type={"submit"}
           className=" hover:bg-accent-link bg-white shadow-2xl"
         >
           Proceed

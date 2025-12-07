@@ -13,7 +13,7 @@ const SideBar = () => {
     <div
       className={`absolute left-0 top-0 min-h-screen ${
         open ? "max-w-50" : "max-w-15 md:max-w-20"
-      } w-full bg-white/60 row-start-2 row-end-3 col-start-1 col-end-2 flex mx-auto flex-col h-full items-start py-5 pt-7 justify-start shadow-2xl inset-shadow-black px-2 shadow-black transition-all`}
+      } w-full bg-white row-start-2 row-end-3 col-start-1 col-end-2 flex mx-auto flex-col h-full items-start py-5 pt-7 justify-start shadow-2xl inset-shadow-black px-2 shadow-black transition-all`}
     >
       <div className="flex justify-center items-center">
       <Sidebar

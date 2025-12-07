@@ -16,11 +16,13 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [token, setToken] = useState(null);
+  const [isLogIn, setIsLogIn] = useState(null);
 
   useEffect(() => {
     const loadData = async () => {
       const token = await cookieStore.get("token");
       setToken(token?.value);
+      setIsLogIn(!!token)
       try {
         const data = await cookieStore.get("data");
         setData(JSON.parse(data?.value));
@@ -42,14 +44,10 @@ export const AuthProvider = ({ children }) => {
       value: JSON.stringify(data),
       expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     });
-    // location.reload()
-    if (data.role == "student") {
-      navigate("/student");
-    }
-    if (data.role == "alumni") {
-      navigate("/alumni");
-    }
-    navigate("/");
+    setIsLogIn(true);
+    if (data.role == "student") navigate("/student");
+    else if (data.role == "alumni") navigate("/alumni");
+    else navigate("/");
   };
 
   const logOut = () => {
@@ -58,9 +56,10 @@ export const AuthProvider = ({ children }) => {
     cookieStore.delete("token");
     cookieStore.delete("data");
     navigate("/login");
+    setIsLogIn(false);
   };
 
-  const value = { data, token, logIn, logOut };
+  const value = { data, token, logIn, logOut, isLogIn };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

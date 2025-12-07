@@ -89,7 +89,7 @@ const SignUpPage = () => {
   return (
     <>
       <div className="flex items-center flex-col gap-1.5 max-w-screen min-h-screen relative w-full ">
-        <h1 className="mt-10 text-3xl text-title-headings text-shadow-lg font-bold uppercase">Sign Up to get into your space</h1>
+        <h1 className="mt-10 text-center text-3xl text-title-headings text-shadow-lg font-bold uppercase">Sign Up to get into your space</h1>
         <AnimatePresence mode="wait">
           {!verified ? (
             <SignUpForm
