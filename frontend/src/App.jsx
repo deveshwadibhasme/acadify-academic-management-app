@@ -7,23 +7,20 @@ import { useEffect, useState } from "react";
 import Header from "./components/layouts/Header.jsx";
 import SideBar from "./components/layouts/SideBar";
 import AnimatedLogoLayout from "./components/layouts/AnimatedLogoLayout";
+import axios from "axios";
+import getURL from "./utils/get-url.js";
 
 function App() {
   const { token, data, isLogIn } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToaster();
 
-  console.log(isLogIn);
-
   useEffect(() => {
-    if (token !== undefined && data?.role === "student") {
+    if (data?.role === "student") {
       navigate("/student");
     }
-    if (token !== undefined && data?.role === "alumni") {
+    if (data?.role === "alumni") {
       navigate("/alumni");
-    }
-    if (token === undefined) {
-      navigate("/");
     }
   }, [token]);
 

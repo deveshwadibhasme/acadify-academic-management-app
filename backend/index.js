@@ -5,6 +5,7 @@ import pool from "./config/connect-sql.js";
 
 import { runQueries } from "./utils/run-queries.js";
 import authRoute from './routes/auth.routes.js';    
+import userRoute from './routes/user.route.js';    
 
 const app = express();
 const port = 3001;
@@ -29,6 +30,7 @@ await pool.getConnection().then((connection) => {
 
 
 app.use('/auth', authRoute);
+app.use('/user', userRoute)
 
 
 app.listen(port, () => {

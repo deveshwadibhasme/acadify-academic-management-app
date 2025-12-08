@@ -78,7 +78,7 @@ const userLogin = async (req, res) => {
         if (!isValid) return res.status(401).json(createRes('warning', 'Incorrect Password or Credential'))
 
         const token = jwt.sign({ id: user[0].id, email: user[0].email, role: user[0].role },
-            process.env.JWT_SECRET, { expiresIn: "1h" });
+            process.env.JWT_SECRET, { expiresIn: "24h" });
 
         return res.status(200).json(createRes('success', 'User Authenticated Successfully',
             { token: token, role: user[0].role, name: user[0].first_name }))

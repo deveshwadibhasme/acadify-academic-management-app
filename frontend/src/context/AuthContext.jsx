@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import getURL from "../utils/get-url";
 
 const AuthContext = createContext(null);
 
@@ -18,20 +20,42 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [isLogIn, setIsLogIn] = useState(null);
 
+  const fetchData = async (logInToken) => {
+    try {
+      const response = await axios.get(getURL("/user/student-data"), {
+        headers: {
+          Authorization: `Bearer ${logInToken || token}`,
+        },
+      });
+      setData(response.data.result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const loadData = async () => {
-      const token = await cookieStore.get("token");
-      setToken(token?.value);
-      setIsLogIn(!!token)
-      try {
-        const data = await cookieStore.get("data");
-        setData(JSON.parse(data?.value));
-      } catch (error) {
-        console.log("Error parsing data from cookie:");
-      }
+      const tokenCookie = await cookieStore.get("token");
+      setToken(tokenCookie?.value);
+      setIsLogIn(!!tokenCookie);
+      // try {
+      //   const data = await cookieStore.get("data");
+      //   setData(JSON.parse(data?.value));
+      // } catch (error) {
+      //   console.log("Error parsing data from cookie:");
+      // }
     };
     loadData();
+    if (token) fetchData();
+    if (data?.role == "student") navigate("/student");
+    else if (data?.role == "alumni") navigate("/alumni");
   }, []);
+
+  useEffect(() => {
+    if (token && !data) {
+      fetchData();
+    }
+  }, [token, data]);
 
   const logIn = async (data) => {
     await cookieStore.set({
@@ -39,15 +63,11 @@ export const AuthProvider = ({ children }) => {
       value: data.token,
       expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     });
-    await cookieStore.set({
-      name: "data",
-      value: JSON.stringify(data),
-      expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    });
     setIsLogIn(true);
+    fetchData(data.token);
     if (data.role == "student") navigate("/student");
     else if (data.role == "alumni") navigate("/alumni");
-    else navigate("/");
+    // else navigate("/");
   };
 
   const logOut = () => {
