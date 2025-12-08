@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import pool from '../config/connect-sql.js'
 import createRes from '../utils/response-emmitor.js'
-import sendEmail from '../utils/send-email.js'
+import sendEmail from '../services/email.service.js'
 
 const generateOTP = () => Math.floor(Math.random() * 9000 + 1000)
 
@@ -15,21 +15,26 @@ const userSignup = async (req, res) => {
     }
 
     try {
-        const [rows] = await pool.query('Select * from users where number = ? and email = ?;', [number, email])
+        const [rows] = await pool.query('Select * from users where email = ?;', [email])
 
 
         if (rows.length !== 0) {
-            res.status(400).json(createRes('warning', 'User already exists'))
+            return res.status(400).json(createRes('warning', 'User already exists'))
         }
+
         const otp = generateOTP()
 
-        sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
+        const response = await sendEmail(email, "OTP for Verification", `Hi there, Your OTP for verify your Email is ${otp}. This OTP will expire in 5 minutes.`)
+
+        if (response.type === 'error') {
+            return res.status(201).json(createRes('error', response.message))
+        }
 
         await pool.query(`insert into otp_store 
             (email, otp_value, expire_at ) 
             values (?,?, DATE_ADD(NOW(), INTERVAL 5 MINUTE))`, [email, otp])
 
-        res.status(201).json(createRes('success', 'OTP Sent Succesfully!!'))
+        return res.status(201).json(createRes('success', 'OTP Sent Succesfully!!'))
 
     } catch (error) {
         console.log(error);
@@ -67,11 +72,16 @@ const verifyOTPandRegisterUser = async (req, res) => {
 
 const userLogin = async (req, res) => {
     const { email, password } = req.body
-
-    if (!email || !password) return res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
+    if (!email || !password) {
+        res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
+    }
 
     try {
+
         const [user] = await pool.query('select * from users where email = ?', [email])
+        if (user.length === 0) {
+            return res.status(401).json(createRes('warning', 'Enter Credential Correctly'))
+        }
 
         const isValid = await bcrypt.compare(password, user[0].password)
 

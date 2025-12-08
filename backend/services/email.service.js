@@ -1,11 +1,11 @@
 import transporter from '../config/email.config.js';
-import createRes from './response-emmitor.js';
+import createRes from '../utils/response-emmitor.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const sendEmail = async (email, subject, body) => {
     let mailOptions = {
-        from: process.env.EMAIL_ID,
+        from: 'Acadify <deveshwadibhasme.03@gmail.com>',
         to: email,
         subject: subject,
         html: body
