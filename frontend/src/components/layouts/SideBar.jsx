@@ -25,7 +25,7 @@ const SideBar = () => {
   return (
     <div
       className={`absolute left-0 top-0 min-h-screen ${
-        open ? "max-w-50" : "max-w-12 lg:max-w-20"
+        open ? "max-w-50" : "max-w-12 lg:max-w-15 2xl:max-w-20"
       } w-full bg-white row-start-2 row-end-3 col-start-1 col-end-2 flex mx-auto flex-col h-full items-start py-5 pt-7 justify-start shadow-2xl inset-shadow-black px-2 shadow-black transition-all`}
     >
       <div className="flex justify-center items-center">
@@ -44,8 +44,8 @@ const SideBar = () => {
         </div>
       </div>
 
-      <nav className="flex flex-col items-center w-full h-1/1 gap-20 mt-10">
-        <Link className="flex max-w-40 text-center items-center w-full h-auto p-1 lg:p-2 bg-white text-header-background rounded-2xl shadow-sm shadow-black/50 transition-all">
+      <nav className="flex flex-col items-center w-full h-1/1 gap-10 lg:gap-10 mt-5 xl:text-sm">
+        <Link className="flex max-w-40 text-center items-center w-full h-auto p-1 lg:p-2 bg-white text-header-background rounded-2xl shadow-sm shadow-black/50 transition-all ">
           <Home
             size={30}
             className={`${open ? "mr-2" : "mr-0"} transition-all`}
@@ -80,7 +80,7 @@ const SideBar = () => {
       </nav>
       <Button
         onClick={handleChange}
-        className={" flex max-w-40 text-center mx-auto items-center w-full h-auto md:py-1 lg:px-5 px-1 hover:bg-orange-400 bg-red-400 text-header-background rounded-2xl shadow-sm shadow-black/50 transition-all"}
+        className={" flex max-w-40 text-center mx-auto items-center w-full h-auto md:py-1 lg:px-5 px-1 xl:px-0 hover:bg-orange-400 bg-red-400 text-header-background rounded-2xl shadow-sm shadow-black/50 transition-all"}
       >
         <LogOut size={30} className={`${open ? "mr-2" : "mr-0"} text-black transition-all`} />{" "}
         <span className={`${open ? "block" : "hidden"} mr-auto transition-all hover:text-white`}>Log Out</span>{" "}

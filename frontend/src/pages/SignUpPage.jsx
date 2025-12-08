@@ -8,6 +8,7 @@ import VerificationForm from "../components/layouts/VerificationForm";
 import { ToastContainer } from "react-toastify";
 import useToaster from "../hooks/useToaster";
 import Button from "../components/Button";
+import { UserCheckIcon } from "lucide-react";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -28,21 +29,25 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(formData.email === "" || formData.password === "") {
-      showToast("info","Type Your Credentials")
-      return
+    if (formData.email === "" || formData.password === "") {
+      showToast("info", "Type Your Credentials");
+      return;
     }
     try {
       const result = await axios.post(getURL("/auth/user/signup"), formData);
 
       const response = result.data;
+
       if (response.type !== "success") {
+        showToast(response.type, response.message);
         throw new Error("Internal Error");
       }
       showToast(response.type, response.message);
       setVerified(!verified);
     } catch (error) {
-      console.error(error);
+      if ((error.name = "AxiosError")) {
+        showToast("error", error.response?.data.message);
+      }
     }
   };
 
@@ -58,7 +63,7 @@ const SignUpPage = () => {
       showToast(response.type, response.message);
 
       if (response.type !== "success") {
-        showToast("error",error.response.data.message);
+        showToast("error", error.response.data.message);
         throw new Error("Internal Error");
       }
       setFormData({
@@ -71,11 +76,12 @@ const SignUpPage = () => {
         role: "",
         otp: "",
       });
-
-      setVerified(!isVerified);
+      
+      setIsVerified(!isVerified);
     } catch (error) {
-      console.error(error);
-      showToast("error", error.response.data.message);
+      if ((error.name = "AxiosError")) {
+        showToast("error", error.response.data.message);
+      }
     }
   };
 
@@ -89,7 +95,9 @@ const SignUpPage = () => {
   return (
     <>
       <div className="flex items-center flex-col gap-1.5 max-w-screen min-h-screen relative w-full ">
-        <h1 className="mt-10 text-center text-3xl text-title-headings text-shadow-lg font-bold uppercase">Sign Up to get into your space</h1>
+        <h1 className="mt-10 text-center text-3xl text-title-headings text-shadow-lg font-bold uppercase">
+          Sign Up to get into your space
+        </h1>
         <AnimatePresence mode="wait">
           {!verified ? (
             <SignUpForm
