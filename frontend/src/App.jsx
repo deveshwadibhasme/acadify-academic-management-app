@@ -11,7 +11,7 @@ import axios from "axios";
 import getURL from "./utils/get-url.js";
 
 function App() {
-  const { token, data, isLogIn } = useAuth();
+  const { token, data, isLogIn ,fetchData } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToaster();
 
@@ -22,6 +22,7 @@ function App() {
     if (data?.role === "alumni") {
       navigate("/alumni");
     }
+    fetchData()
   }, [token]);
 
   return isLogIn ? (

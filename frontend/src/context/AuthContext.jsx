@@ -20,42 +20,45 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [isLogIn, setIsLogIn] = useState(null);
 
-  const fetchData = async (logInToken) => {
+  const fetchData = async (role, logInToken) => {
     try {
-      const response = await axios.get(getURL("/user/student-data"), {
+      const currentToken = logInToken || token;
+      if (!currentToken || !role) return;
+
+      const response = await axios.get(getURL(`/user/${role}-data`), {
         headers: {
-          Authorization: `Bearer ${logInToken || token}`,
+          Authorization: `Bearer ${currentToken}`,
         },
       });
       setData(response.data.result);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching user data:", error);
+      // Optional: handle logout on auth error (e.g., 401)
+      if (error.response?.status === 401) {
+        logOut();
+      }
     }
   };
 
   useEffect(() => {
     const loadData = async () => {
       const tokenCookie = await cookieStore.get("token");
-      setToken(tokenCookie?.value);
-      setIsLogIn(!!tokenCookie);
-      // try {
-      //   const data = await cookieStore.get("data");
-      //   setData(JSON.parse(data?.value));
-      // } catch (error) {
-      //   console.log("Error parsing data from cookie:");
-      // }
+      const dataCookie = await cookieStore.get("data");
+
+      if (tokenCookie?.value && dataCookie?.value) {
+        const parsedData = JSON.parse(dataCookie.value);
+        setToken(tokenCookie.value);
+        setData(parsedData);
+        setIsLogIn(true);
+        fetchData(parsedData.role, tokenCookie.value); 
+        if (parsedData.role === "student") navigate("/student");
+        else if (parsedData.role === "alumni") navigate("/alumni");
+      } else {
+        setIsLogIn(false);
+      }
     };
     loadData();
-    if (token) fetchData();
-    if (data?.role == "student") navigate("/student");
-    else if (data?.role == "alumni") navigate("/alumni");
   }, []);
-
-  useEffect(() => {
-    if (token && !data) {
-      fetchData();
-    }
-  }, [token, data]);
 
   const logIn = async (data) => {
     await cookieStore.set({
@@ -63,8 +66,14 @@ export const AuthProvider = ({ children }) => {
       value: data.token,
       expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     });
+    await cookieStore.set({
+      name: "data",
+      value: JSON.stringify(data),
+      expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    });
+    setToken(data.token);
     setIsLogIn(true);
-    fetchData(data.token);
+    fetchData(data.role, data.token); 
     if (data.role == "student") navigate("/student");
     else if (data.role == "alumni") navigate("/alumni");
     // else navigate("/");
@@ -79,7 +88,7 @@ export const AuthProvider = ({ children }) => {
     setIsLogIn(false);
   };
 
-  const value = { data, token, logIn, logOut, isLogIn };
+  const value = { data, token, logIn, logOut, isLogIn ,fetchData };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
